@@ -1,0 +1,32 @@
+metadata:
+    name: act
+    format: "Lava-Test Test Definition 1.0"
+    description: "Run ACTS tests in LAVA."
+    maintainer:
+        - patrik.beyls@worldline.com
+    os:
+        - android
+    devices:
+        - imx8-yumi
+    scope:
+        - connectivity
+
+params:
+    # Download ACTS package or copy it from local disk.
+    # TEST_URL: "/root/android-acts/acts_tests.zip"
+    TEST_URL: "http://github.com/beylsp/android-acts.git"
+    TEST_CONFIG: "config.json"
+
+run:
+    steps:
+        - cd ./automated/android/act
+        # Run setup.sh in the original shell to reserve env variables.
+        - . ./setup.sh
+        - echo "after ./setup.sh"
+        # Run ACTS tests.
+        - python3 ./acts_tests/tools/generate_act_config.py -d ${ANDROID_SERIAL} -t ${TEST_CONFIG_TEMPLATE} -o ${TEST_CONFIG}
+        - act.py -c ./${TEST_CONFIG} ${TEST_PARAMS}
+        # Read test results.
+        # - python3 ./acts_tests/tools/read_acts_results.py -f ./output/test_run_summary.json -o ./output/result.txt --lava
+        # Send test result to LAVA.
+        #- ../../utils/send-to-lava.sh "./output/result.txt"
