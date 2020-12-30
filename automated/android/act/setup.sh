@@ -11,7 +11,6 @@ PKG_DEPS="python3-setuptools python3-pip protobuf-compiler"
 dist_name
 case "${dist}" in
     ubuntu)
-        dpkg --add-architecture i386
         apt-get update -q
         install_deps "${PKG_DEPS}"
         ;;
