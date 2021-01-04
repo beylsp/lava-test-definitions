@@ -35,7 +35,7 @@ pip3 -q install --upgrade pip setuptools
 # Install ACTS.
 cd acts_tests/acts/framework
 python3 setup.py -q install
-cd --
+cd -
 
 # Setup adb.
 initialize_adb
