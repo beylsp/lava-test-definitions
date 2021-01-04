@@ -21,7 +21,7 @@ esac
 
 # Download ACTS test package or copy it from local disk.
 if echo "${TEST_URL}" | grep "^http" ; then
-    wget -S --progress=dot:giga "${TEST_URL}"
+    wget -q "${TEST_URL}"
 else
     cp "${TEST_URL}" ./
 fi
@@ -30,7 +30,7 @@ unzip -q "${file_name}"
 rm -f "${file_name}"
 
 # Update pip and setuptools.
-pip3 install --upgrade pip setuptools
+pip3 -q install --upgrade pip setuptools
 
 # Install ACTS.
 python3 acts_tests/acts/framework/setup.py -q install
