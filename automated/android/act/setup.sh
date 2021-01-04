@@ -37,4 +37,5 @@ python3 acts_tests/acts/framework/setup.py -q install
 
 # Setup adb.
 initialize_adb
+wait_boot_completed "300"
 adb_root
