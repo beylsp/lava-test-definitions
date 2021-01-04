@@ -14,7 +14,7 @@ metadata:
 params:
     # Download ACTS package or copy it from local disk.
     # TEST_URL: "/root/android-acts/acts_tests.zip"
-    TEST_URL: "http://github.com/beylsp/android-acts.git"
+    TEST_URL: "http://github.com/beylsp/android-acts/releases/latest/download/acts.zip"
     TEST_CONFIG: "config.json"
 
 run:
