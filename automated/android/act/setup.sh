@@ -33,7 +33,9 @@ rm -f "${file_name}"
 pip3 -q install --upgrade pip setuptools
 
 # Install ACTS.
-python3 acts_tests/acts/framework/setup.py -q install
+cd acts_tests/acts/framework
+python3 setup.py -q install
+cd --
 
 # Setup adb.
 initialize_adb
